@@ -1,0 +1,84 @@
+/* Hintergrundvideo */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Overlay für Inhalte */
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-family: 'Limelight', cursive;
+  font-size: 6rem;
+  color: white;
+  letter-spacing: 2px;
+  text-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.2rem;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+/* Inhalt der „Über mich“-Seite */
+.about-me {
+  margin-top: 3rem;
+}
+
+.about-me h2 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 3rem;
+  color: white;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), -2px -2px 4px rgba(0, 0, 0, 0.7), 2px -2px 4px rgba(0, 0, 0, 0.7), -2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.about-me p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.2rem;
+  color: white;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), -2px -2px 4px rgba(0, 0, 0, 0.7), 2px -2px 4px rgba(0, 0, 0, 0.7), -2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+  padding-bottom: 2rem;
+	color: white
+}

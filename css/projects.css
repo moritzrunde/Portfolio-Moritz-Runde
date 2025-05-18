@@ -1,0 +1,216 @@
+/* Hintergrundvideo */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Overlay für Inhalte */
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-family: 'Limelight', cursive;
+  font-size: 6rem;
+  color: white;
+  letter-spacing: 2px;
+  text-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.2rem;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+/* Inhalt der „Projekte“-Seite */
+.projects {
+  margin-top: 3rem;
+}
+
+.projects h2 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 3rem;
+  color: white;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), -2px -2px 4px rgba(0, 0, 0, 0.7), 2px -2px 4px rgba(0, 0, 0, 0.7), -2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.projects p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.2rem;
+  color: white;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), -2px -2px 4px rgba(0, 0, 0, 0.7), 2px -2px 4px rgba(0, 0, 0, 0.7), -2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+  padding-bottom: 2rem;
+	color: white
+}
+
+
+
+.accordion-item {
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.4);
+}
+
+.accordion-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.3s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.accordion-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.accordion-content {
+  overflow: hidden;
+  height: 0;
+  transition: height 0.4s ease;
+}
+
+.accordion-content a {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+
+.accordion-item.active .accordion-content {
+  /* height wird per JS gesetzt */
+  padding-top: 1rem;
+}
+
+
+
+.project {
+  margin-bottom: 2rem;
+}
+
+.project iframe,
+.project audio,
+.project img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  margin-bottom: 0.5rem;
+}
+
+.project-description {
+  font-size: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+/* Für Fotos: ein Grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.media-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Verhältnis (9 / 16 = 0.5625 = 56.25%) */
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.media-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.youtube-thumbnail {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  margin-bottom: 1rem;
+}
+
+.youtube-thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.youtube-thumbnail .play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  background: rgba(0,0,0,0.6) url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" fill="white" xmlns="http://www.w3.org/2000/svg"><polygon points="40,30 70,50 40,70"/></svg>') no-repeat center;
+  background-size: 40%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: background 0.3s;
+}
+
+.youtube-thumbnail:hover .play-button {
+  background-color: rgba(255, 0, 0, 0.8);
+}
