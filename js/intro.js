@@ -4,24 +4,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const introShown = sessionStorage.getItem('introPlayed');
 
-  if (introVideo && !introShown) {
-    introVideo.play();
-
-    introVideo.addEventListener('ended', () => {
-      // Fade-Out-Klasse hinzufügen
-      introVideo.classList.add('fade-out');
-
-      // Nach der Transition das Video ausblenden und Inhalt zeigen
-      setTimeout(() => {
-        introVideo.style.display = 'none';
-        body.classList.remove('hide-content');
-        body.classList.add('show-content');
-      }, 1200); // entspricht der CSS-Transition-Dauer
-      sessionStorage.setItem('introPlayed', 'true');
-    });
-  } else {
+  // Falls Intro bereits gezeigt wurde → direkt Inhalt anzeigen
+  if (!introVideo || introShown) {
     if (introVideo) introVideo.style.display = 'none';
     body.classList.remove('hide-content');
     body.classList.add('show-content');
+    return;
   }
+
+  // Andernfalls: Intro zeigen
+  introVideo.play().catch(() => {
+    // Wenn autoplay fehlschlägt → sofort weitermachen
+    introVideo.style.display = 'none';
+    body.classList.remove('hide-content');
+    body.classList.add('show-content');
+  });
+
+  // Sobald das Video zu Ende ist
+  introVideo.addEventListener('ended', () => {
+    introVideo.classList.add('fade-out');
+    setTimeout(() => {
+      introVideo.style.display = 'none';
+      body.classList.remove('hide-content');
+      body.classList.add('show-content');
+    }, 1200); // CSS-Transition-Dauer
+    sessionStorage.setItem('introPlayed', 'true');
+  });
+
+  // Notfall-Fallback: Falls Video nie endet (z. B. bei Fehler)
+  setTimeout(() => {
+    if (!sessionStorage.getItem('introPlayed')) {
+      introVideo.classList.add('fade-out');
+      introVideo.style.display = 'none';
+      body.classList.remove('hide-content');
+      body.classList.add('show-content');
+    }
+  }, 8000); // 8 Sekunden, je nach Videolänge anpassen
 });

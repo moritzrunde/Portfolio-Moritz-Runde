@@ -25,11 +25,13 @@
   <!-- Seiteninhalt -->
   <div class="content">
     <header>
-      <h1>Projekte</h1>
 		
-      <!-- Offcanvas-Navigation -->
-      <nav id="main-nav">
-        <ul>
+		<h1>Projekte</h1>
+		
+      <!-- Burger-Menü + Navigation -->
+      <nav>
+        <div class="burger">&#9776;</div>
+        <ul class="nav-links">
           <li><a href="index.html">Startseite</a></li>
           <li><a href="about.html">Über mich</a></li>
           <li><a href="projects.html">Projekte</a></li>
@@ -37,12 +39,19 @@
         </ul>
       </nav>
 
-      <!-- Burger-Menü Button -->
-      <button id="burger-toggle" aria-label="Menü öffnen">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <!-- Overlay Navigation -->
+      <div class="overlay-nav" id="overlayNav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+          <a href="index.html">Startseite</a>
+          <a href="about.html">Über mich</a>
+          <a href="projects.html">Projekte</a>
+          <a href="contact.html">Kontakt</a>
+        </div>
+      </div>
+		
+		
+		  
     </header>
 
     <section class="projects">
@@ -99,27 +108,32 @@
     </footer>
   </div>
 
-  <!-- JS -->
+  <!-- externe JS -->
   <script src="js/accordion.js"></script>
   <script src="js/video-thumbnails.js"></script>
 
-  <!-- Burger-Menü JS -->
+  <!-- Burger Menü JS -->
   <script>
-    const burger = document.getElementById('burger-toggle');
-    const nav = document.getElementById('main-nav');
-    const overlay = document.getElementById('offcanvas-overlay');
+  const burger = document.querySelector('.burger');
+  const overlayNav = document.getElementById('overlayNav');
+  const overlayContent = document.querySelector('.overlay-content'); // Der Inhalt des Menüs
 
-    burger.addEventListener('click', () => {
-      burger.classList.toggle('active');
-      nav.classList.toggle('show');
-      overlay.classList.toggle('show');
-    });
+  // Öffnen des Menüs
+  burger.addEventListener('click', () => {
+    overlayNav.classList.add('open');
+  });
 
-    overlay.addEventListener('click', () => {
-      burger.classList.remove('active');
-      nav.classList.remove('show');
-      overlay.classList.remove('show');
-    });
-  </script>
+  // Schließen des Menüs, wenn auf das X geklickt wird
+  function closeNav() {
+    overlayNav.classList.remove('open');
+  }
+
+  // Schließen des Menüs, wenn auf einen Bereich außerhalb des Menüs geklickt wird
+  document.addEventListener('click', (e) => {
+    if (!overlayNav.contains(e.target) && !burger.contains(e.target)) {
+      overlayNav.classList.remove('open');
+    }
+  });
+</script>
 </body>
 </html>

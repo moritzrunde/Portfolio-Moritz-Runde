@@ -27,7 +27,7 @@ h1, h2, h3 {
   left: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  object-fit: contain;
   z-index: 1000;
   background: black;
   opacity: 1;
@@ -55,8 +55,8 @@ body.show-content .content {
 
 @media (max-aspect-ratio: 9/16) {
   #intro-video {
-    object-fit: contain; /* oder 'cover', je nach Wunsch */
-    background-color: black;
+    object-fit: contain;
+    background-color: grey;
   }
 }
 
@@ -85,7 +85,7 @@ body.show-content .content {
 header {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: center;
   gap: 1rem;
   margin-bottom: 2rem;
@@ -103,93 +103,78 @@ header h1 {
   text-overflow: ellipsis;
 }
 
-/* -------- BURGER BUTTON -------- */
-#burger-toggle {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
+/* Burger Menu Button */
+.burger {
+  display: none;
+  font-size: 2rem;
   cursor: pointer;
-  z-index: 101;
+  color: white;
+  position: relative;
+  z-index: 1100;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+  }
+	
+	header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .burger {
+    display: block;
+    margin-left: 0;
+  }
+}
+
+/* Off-Canvas Navigation von rechts */
+.overlay-nav {
+  height: 100%;
+  width: 0;
   position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  overflow-x: hidden;
+  transition: width 0.3s ease;
+}
+
+.overlay-nav.open {
+  width: 250px;
+}
+
+.overlay-nav .closebtn {
+  position: absolute;
   top: 1rem;
   right: 1rem;
-}
-
-#burger-toggle span {
-  display: block;
-  width: 28px;
-  height: 3px;
-  background: white;
-  border-radius: 2px;
-  transition: 0.3s ease;
-}
-
-#burger-toggle.active span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-#burger-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-#burger-toggle.active span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-/* -------- OFFCANVAS MENU -------- */
-#main-nav {
-  position: fixed;
-  top: 0;
-  right: -250px;
-  height: 100%;
-  width: 250px;
-  background: rgba(0, 0, 0, 0.95);
-  display: flex;
-  flex-direction: column;
-  padding: 4rem 1.5rem;
-  gap: 2rem;
-  transition: right 0.3s ease;
-  z-index: 100;
-}
-
-#main-nav.show {
-  right: 0;
-}
-
-#main-nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-#main-nav a {
-  font-size: 1.3rem;
+  font-size: 3rem;
   color: white;
   text-decoration: none;
-  transition: 0.3s;
 }
 
-#main-nav a:hover {
-  color: #ff00cc;
+.overlay-content {
+  margin-top: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* -------- OVERLAY -------- */
-#offcanvas-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 99;
+.overlay-content a {
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
 }
 
-#offcanvas-overlay.show {
-  opacity: 1;
-  pointer-events: auto;
+.overlay-content a:hover {
+  color: #ccc;
 }
+
 
 /* -------- MAIN TEXT -------- */
 h2 {
@@ -271,6 +256,8 @@ footer {
     height: auto;
     right: auto;
     z-index: auto;
+	display: flex;
+	align-items: center;
   }
 
   #main-nav ul {
@@ -283,6 +270,7 @@ footer {
   }
 
   #main-nav a {
+	color: white;
     font-size: 1rem;
   }
 

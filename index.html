@@ -9,12 +9,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Limelight&family=DM+Sans:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="hide-content">
 
   <!-- Intro-Video -->
   <video id="intro-video" autoplay muted playsinline>
+	  <source src="assets/video/logo.mp4" type="video/mp4">
     <source src="assets/video/logo.webm" type="video/webm">
     Dein Browser unterstützt kein HTML5-Video.
   </video>
@@ -34,22 +35,27 @@
     <header>
       <h1>Moritz Runde</h1>
 		
-		<!-- Off-Canvas Navigation -->
-	  <nav id="main-nav">
-		<ul>
-		  <a href="index.html">Startseite</a>
-		  <a href="about.html">Über mich</a>
-		  <a href="projects.html">Projekte</a>
-		  <a href="contact.html">Kontakt</a>
-		</ul>
-	  </nav>
+		<!-- Burger-Menü + Navigation -->
+      <nav>
+        <div class="burger">&#9776;</div>
+        <ul class="nav-links">
+          <a href="index.html">Startseite</a>
+          <a href="about.html">Über mich</a>
+          <a href="projects.html">Projekte</a>
+          <a href="contact.html">Kontakt</a>
+        </ul>
+      </nav>
 
-      <!-- Burger-Menü -->
-      <button id="burger-toggle" aria-label="Menü öffnen">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <!-- Overlay Navigation -->
+      <div class="overlay-nav" id="overlayNav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+          <a href="index.html">Startseite</a>
+          <a href="about.html">Über mich</a>
+          <a href="projects.html">Projekte</a>
+          <a href="contact.html">Kontakt</a>
+        </div>
+      </div>
     </header>
 
     <h2>Regisseur &#x2022; Drehbuchautor &#x2022; Editor &#x2022; VFX-Artist</h2>
@@ -67,6 +73,30 @@
 
   <!-- Skripte -->
   <script src="js/intro.js"></script>
-  <script src="js/burger.js"></script>
+  
+	<!-- Burger Menü JS -->
+  <script>
+  const burger = document.querySelector('.burger');
+  const overlayNav = document.getElementById('overlayNav');
+  const overlayContent = document.querySelector('.overlay-content'); // Der Inhalt des Menüs
+
+  // Öffnen des Menüs
+  burger.addEventListener('click', () => {
+    overlayNav.classList.add('open');
+  });
+
+  // Schließen des Menüs, wenn auf das X geklickt wird
+  function closeNav() {
+    overlayNav.classList.remove('open');
+  }
+
+  // Schließen des Menüs, wenn auf einen Bereich außerhalb des Menüs geklickt wird
+  document.addEventListener('click', (e) => {
+    if (!overlayNav.contains(e.target) && !burger.contains(e.target)) {
+      overlayNav.classList.remove('open');
+    }
+  });
+</script>
+
 </body>
 </html>
