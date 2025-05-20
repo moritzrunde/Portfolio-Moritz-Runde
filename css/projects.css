@@ -64,14 +64,14 @@ nav a:hover {
   font-family: 'Raleway', sans-serif;
   font-size: 3rem;
   color: white;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), -2px -2px 4px rgba(0, 0, 0, 0.7), 2px -2px 4px rgba(0, 0, 0, 0.7), -2px 2px 4px rgba(0, 0, 0, 0.7);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), -2px -2px 4px rgba(0, 0, 0, 0.7), 2px -2px 4px rgba(0, 0, 0, 0.7), -2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .projects p {
   font-family: 'DM Sans', sans-serif;
   font-size: 1.2rem;
   color: white;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), -2px -2px 4px rgba(0, 0, 0, 0.7), 2px -2px 4px rgba(0, 0, 0, 0.7), -2px 2px 4px rgba(0, 0, 0, 0.7);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), -2px -2px 4px rgba(0, 0, 0, 0.7), 2px -2px 4px rgba(0, 0, 0, 0.7), -2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 /* Footer */
@@ -80,17 +80,16 @@ footer {
   font-size: 0.9rem;
   margin-top: 3rem;
   padding-bottom: 2rem;
-	color: white
+  color: white;
 }
 
-
-
+/* Accordion für Projekte */
 .accordion-item {
   margin-bottom: 1.5rem;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 6px;
   overflow: hidden;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .accordion-btn {
@@ -124,13 +123,10 @@ footer {
   font-weight: bold;
 }
 
-
 .accordion-item.active .accordion-content {
   /* height wird per JS gesetzt */
   padding-top: 1rem;
 }
-
-
 
 .project {
   margin-bottom: 2rem;
@@ -141,7 +137,7 @@ footer {
 .project img {
   width: 100%;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin-bottom: 0.5rem;
 }
 
@@ -149,7 +145,7 @@ footer {
   font-size: 1rem;
   font-family: 'DM Sans', sans-serif;
   color: white;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 /* Für Fotos: ein Grid */
@@ -166,7 +162,7 @@ footer {
   overflow: hidden;
   border-radius: 8px;
   margin-bottom: 1rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .media-wrapper iframe {
@@ -185,7 +181,7 @@ footer {
   cursor: pointer;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin-bottom: 1rem;
 }
 
@@ -204,7 +200,7 @@ footer {
   left: 50%;
   width: 60px;
   height: 60px;
-  background: rgba(0,0,0,0.6) url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" fill="white" xmlns="http://www.w3.org/2000/svg"><polygon points="40,30 70,50 40,70"/></svg>') no-repeat center;
+  background: rgba(0, 0, 0, 0.6) url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" fill="white" xmlns="http://www.w3.org/2000/svg"><polygon points="40,30 70,50 40,70"/></svg>') no-repeat center;
   background-size: 40%;
   border-radius: 50%;
   transform: translate(-50%, -50%);
@@ -214,3 +210,81 @@ footer {
 .youtube-thumbnail:hover .play-button {
   background-color: rgba(255, 0, 0, 0.8);
 }
+
+/* -------- Burger-Menü -------- */
+#burger-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+}
+
+#burger-toggle span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+
+#burger-toggle.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+#burger-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+#burger-toggle.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* -------- Offcanvas Menü -------- */
+#main-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  height: 100%;
+  width: 250px;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 1.5rem;
+  gap: 2rem;
+  transition: transform 0.3s ease;
+  z-index: 100;
+}
+
+#main-nav.show {
+  transform: translateX(0);
+}
+
+#main-nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#main-nav a {
+  font-size: 1.3rem;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+#main-nav a:hover {
+  color: #ff00cc;
+}
+
+/* Overlay für Offcanvas */
+#offcanvas-overlay {
+  position: fixed;
+ 

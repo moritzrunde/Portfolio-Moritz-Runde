@@ -1,23 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const logoContainer = document.getElementById('intro-logo-container');
+  const introVideo = document.getElementById('intro-video');
   const body = document.body;
 
-  // Seite beginnt mit verstecktem Content
-  body.classList.add('hide-content');
+  const introShown = sessionStorage.getItem('introPlayed');
 
-  // Warte 1 Sekunde, dann animiere das Logo
-  setTimeout(() => {
-    logoContainer.classList.add('show');
+  if (introVideo && !introShown) {
+    introVideo.play();
 
-    // Nach 2 Sekunden: fade-out des Logos
-    setTimeout(() => {
-      logoContainer.classList.add('fadeout');
-    }, 2000);
+    introVideo.addEventListener('ended', () => {
+      // Fade-Out-Klasse hinzufügen
+      introVideo.classList.add('fade-out');
 
-    // Nach 3 Sekunden: zeige den Seiteninhalt
-    setTimeout(() => {
-      body.classList.remove('hide-content');
-      body.classList.add('show-content');
-    }, 3000);
-  }, 1000); // Delay vor dem Logo-Erscheinen
+      // Nach der Transition das Video ausblenden und Inhalt zeigen
+      setTimeout(() => {
+        introVideo.style.display = 'none';
+        body.classList.remove('hide-content');
+        body.classList.add('show-content');
+      }, 1200); // entspricht der CSS-Transition-Dauer
+      sessionStorage.setItem('introPlayed', 'true');
+    });
+  } else {
+    if (introVideo) introVideo.style.display = 'none';
+    body.classList.remove('hide-content');
+    body.classList.add('show-content');
+  }
 });

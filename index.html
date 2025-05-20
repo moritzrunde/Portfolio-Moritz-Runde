@@ -11,36 +11,49 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
-	
+<body class="hide-content">
+
+  <!-- Intro-Video -->
+  <video id="intro-video" autoplay muted playsinline>
+    <source src="assets/video/logo.webm" type="video/webm">
+    Dein Browser unterstützt kein HTML5-Video.
+  </video>
+
+
+  <!-- Overlay für Off-Canvas -->
+  <div id="offcanvas-overlay"></div>
+
   <!-- Hintergrundvideo -->
   <video autoplay muted loop id="bg-video">
     <source src="assets/video/bg02.mp4" type="video/mp4">
     Dein Browser unterstützt kein HTML5-Video.
   </video>
-	
-	<!-- Neuer Container für das Logo -->
-<div id="intro-logo-container">
-  <h1>MFX Studios</h1>
-</div>
 
-  <!-- Overlay für Inhalte -->
+  <!-- Inhalt -->
   <div class="content">
     <header>
       <h1>Moritz Runde</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Startseite</a></li>
-          <li><a href="about.html">Über mich</a></li>
-          <li><a href="projects.html">Projekte</a></li>
-          <li><a href="contact.html">Kontakt</a></li>
-        </ul>
-      </nav>
+		
+		<!-- Off-Canvas Navigation -->
+	  <nav id="main-nav">
+		<ul>
+		  <a href="index.html">Startseite</a>
+		  <a href="about.html">Über mich</a>
+		  <a href="projects.html">Projekte</a>
+		  <a href="contact.html">Kontakt</a>
+		</ul>
+	  </nav>
+
+      <!-- Burger-Menü -->
+      <button id="burger-toggle" aria-label="Menü öffnen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </header>
-        <h2>
-          Regisseur &#x2022; Drehbuchautor &#x2022; Editor &#x2022; VFX-Artist
-        </h2>
-        
+
+    <h2>Regisseur &#x2022; Drehbuchautor &#x2022; Editor &#x2022; VFX-Artist</h2>
+
     <aside class="letterboxd-widget">
       <h3>Letterboxd Diary</h3>
       <div id="letterboxd-feed"></div>
@@ -51,6 +64,9 @@
       <p>&copy; 2025 Moritz Runde</p>
     </footer>
   </div>
-	<script src="js/intro.js"></script>
+
+  <!-- Skripte -->
+  <script src="js/intro.js"></script>
+  <script src="js/burger.js"></script>
 </body>
 </html>

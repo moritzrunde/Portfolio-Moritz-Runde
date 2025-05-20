@@ -9,42 +9,80 @@
   <link href="https://fonts.googleapis.com/css2?family=Limelight&family=DM+Sans:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  
-	<link rel="stylesheet" href="css/about.css" />   <!-- Styles für "Über mich"-Seite -->
+  <link rel="stylesheet" href="css/about.css" />
 </head>
 <body>
-	
+
   <!-- Hintergrundvideo -->
   <video autoplay muted loop id="bg-video">
     <source src="assets/video/bg02.mp4" type="video/mp4">
     Dein Browser unterstützt kein HTML5-Video.
   </video>
-	
+
   <!-- Overlay für Inhalte -->
   <div class="content">
     <header>
       <h1>Über mich</h1>
+
+      <!-- Burger-Menü + Navigation -->
       <nav>
-        <ul>
+        <div class="burger">&#9776;</div>
+        <ul class="nav-links">
           <li><a href="index.html">Startseite</a></li>
           <li><a href="about.html">Über mich</a></li>
           <li><a href="projects.html">Projekte</a></li>
           <li><a href="contact.html">Kontakt</a></li>
         </ul>
       </nav>
+
+      <!-- Overlay Navigation -->
+      <div class="overlay-nav" id="overlayNav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+          <a href="index.html">Startseite</a>
+          <a href="about.html">Über mich</a>
+          <a href="projects.html">Projekte</a>
+          <a href="contact.html">Kontakt</a>
+        </div>
+      </div>
     </header>
-        
-    <!-- Inhalt der „Über mich“-Seite -->
+
+    <!-- Über mich Bereich -->
     <section class="about-me">
-      <h2>Moin!</h2>
-      <p>Ich bin Moritz, </p>
-      <p>ein kreativer Kopf aus Oldenburg. Aktuell studiere ich Film & Fernsehen an der SRH University in Berlin. Ich bin als Regisseur, Drehbuchautor, Editor und VFX-Artist tätig. Auf der 'Projekte' Seite findet ihr die Filme an denen ich mitgearbeitet habe, den Podcast bei dem ich Co-Host bin und andere Arbeiten von mir.</p>
-      <!-- Weitere Abschnitte können hier hinzugefügt werden -->
+      <h2>Hallo, ich bin Moritz!</h2>
+      <p>Ich bin ein kreativer Entwickler, der es liebt, innovative Webseiten und Anwendungen zu gestalten.</p>
+      <p>Mit einer Leidenschaft für Design und Benutzererfahrung strebe ich danach, Projekte zu schaffen, die sowohl ästhetisch ansprechend als auch funktional sind.</p>
     </section>
 
     <footer>
       <p>&copy; 2025 Moritz Runde</p>
     </footer>
   </div>
+
+  <!-- Burger Menü JS -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const burger = document.querySelector('.burger');
+    const overlayNav = document.getElementById('overlayNav');
+    
+    // Öffnen des Menüs
+    burger.addEventListener('click', () => {
+      overlayNav.classList.add('open');
+    });
+
+    // Schließen des Menüs, wenn auf das X geklickt wird
+    function closeNav() {
+      overlayNav.classList.remove('open');
+    }
+
+    // Schließen des Menüs, wenn auf einen Bereich außerhalb des Menüs geklickt wird
+    document.addEventListener('click', (e) => {
+      if (!overlayNav.contains(e.target) && !burger.contains(e.target)) {
+        overlayNav.classList.remove('open');
+      }
+    });
+  });
+  </script>
+
 </body>
 </html>

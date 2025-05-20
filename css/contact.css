@@ -55,7 +55,74 @@ nav a:hover {
   border-radius: 4px;
 }
 
-/* Inhalt der „Über mich“-Seite */
+/* Burger Menu Button */
+.burger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+  position: relative;
+  z-index: 1100;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+    order: 2;
+    margin-left: auto;
+  }
+}
+
+/* Off-Canvas Navigation von rechts */
+.overlay-nav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  overflow-x: hidden;
+  transition: width 0.3s ease;
+}
+
+.overlay-nav.open {
+  width: 250px;
+}
+
+.overlay-nav .closebtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 3rem;
+  color: white;
+  text-decoration: none;
+}
+
+.overlay-content {
+  margin-top: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.overlay-content a {
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+}
+
+.overlay-content a:hover {
+  color: #ccc;
+}
+
+/* Kontaktbereich */
 .contact {
   margin-top: 3rem;
 }
@@ -64,27 +131,26 @@ nav a:hover {
   font-family: 'Raleway', sans-serif;
   font-size: 3rem;
   color: white;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), -2px -2px 4px rgba(0, 0, 0, 0.7), 2px -2px 4px rgba(0, 0, 0, 0.7), -2px 2px 4px rgba(0, 0, 0, 0.7);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .contact p {
   font-family: 'DM Sans', sans-serif;
   font-size: 1.2rem;
   color: white;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), -2px -2px 4px rgba(0, 0, 0, 0.7), 2px -2px 4px rgba(0, 0, 0, 0.7), -2px 2px 4px rgba(0, 0, 0, 0.7);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  font-size: 0.9rem;
-  margin-top: 3rem;
-  padding-bottom: 2rem;
-	color: white;
-	position: relative;
-  top: -280px;
+.contact a {
+  color: white;
+  text-decoration: underline;
 }
 
+.contact a:hover {
+  color: #ccc;
+}
+
+/* Instagram Box */
 .instagram-box {
   margin-top: 2rem;
   display: flex;
@@ -107,19 +173,49 @@ footer {
   height: 32px;
 }
 
-.contact a {
-  color: white;
-  text-decoration: underline; /* Optional für bessere Sichtbarkeit */
-}
-
-.contact a:hover {
-  color: #ccc; /* Optionaler Hover-Effekt */
-}
-
-
-/* Instagram Widget Container */
-.instagram-media {
-  position: relative; /* Macht es möglich, das Widget relativ zur normalen Position zu verschieben */
-  top: -200px; /* Verschiebt das Widget 50px nach oben - Wert anpassen, je nach Bedarf */
+/* Instagram Widget responsive fix */
+.instagram-embed-wrapper {
   width: 100%;
+  max-width: 350px;
+  margin-top: 2rem;
+}
+
+.instagram-embed-wrapper iframe,
+.instagram-embed-wrapper blockquote {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Layout für Instagram + Kontakt nebeneinander */
+.contact-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .contact-layout {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .contact-info {
+    flex: 2;
+  }
+
+  .instagram-embed-wrapper {
+    flex: 1;
+    max-width: 320px;
+  }
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+  padding-bottom: 2rem;
+  color: white;
 }

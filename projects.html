@@ -9,22 +9,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Limelight&family=DM+Sans:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  
-	<link rel="stylesheet" href="css/projects.css" />   <!-- Styles für "Über mich"-Seite -->
+  <link rel="stylesheet" href="css/projects.css" />
 </head>
 <body>
-	
+
   <!-- Hintergrundvideo -->
   <video autoplay muted loop id="bg-video">
     <source src="assets/video/bg02.mp4" type="video/mp4">
     Dein Browser unterstützt kein HTML5-Video.
   </video>
-	
-  <!-- Overlay für Inhalte -->
+
+  <!-- Overlay -->
+  <div id="offcanvas-overlay"></div>
+
+  <!-- Seiteninhalt -->
   <div class="content">
     <header>
       <h1>Projekte</h1>
-      <nav>
+		
+      <!-- Offcanvas-Navigation -->
+      <nav id="main-nav">
         <ul>
           <li><a href="index.html">Startseite</a></li>
           <li><a href="about.html">Über mich</a></li>
@@ -32,75 +36,90 @@
           <li><a href="contact.html">Kontakt</a></li>
         </ul>
       </nav>
+
+      <!-- Burger-Menü Button -->
+      <button id="burger-toggle" aria-label="Menü öffnen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </header>
-	  
-	<section class="projects">
-		
-  <div class="accordion-item">
-    <button class="accordion-btn">🎬 Filme</button>
-    <div class="accordion-content">
-	<!--Film 1-->	
-      <div class="project">
-  <div class="media-wrapper">
-    <iframe src="https://www.youtube.com/embed/QKzA4syYQSU" allowfullscreen></iframe>
-  </div>
-  <p class="project-description">Beschreibung folgt in kürze...</p>
-</div>
-	<!--Film 2-->
-		<div class="youtube-thumbnail" data-url="https://www.youtube.com/watch?v=a1k8KOfwseE">
-  <img src="https://img.youtube.com/vi/a1k8KOfwseE/hqdefault.jpg" alt="Video Thumbnail">
-  <div class="play-button"></div>
-	</div>
-  		<p class="project-description">Beschreibung folgt in kürze...</p>
-		
-	<!--Film 3-->	
-		<div class="youtube-thumbnail" data-url="https://www.youtube.com/watch?v=rgA3cPh0c_I">
-  <img src="https://img.youtube.com/vi/rgA3cPh0c_I/hqdefault.jpg" alt="Video Thumbnail">
-  <div class="play-button"></div>
-	</div>
-  		<p class="project-description">Beschreibung folgt in kürze...</p>
-		
-		
-	</div>
-</div>
-		
 
-  <div class="accordion-item">
-    <button class="accordion-btn">🎙️ Podcast</button>
-    <div class="accordion-content">
-	
-		<p>Hier gibts die letzten drei Folgen vom Max und Moritz Podcast. Der Podcast ist auch auf <a href="https://open.spotify.com/show/1i0vvZ83Mm3qPx2x22l9iO" target="_blank" rel="noopener noreferrer">Spotify</a> und <a href="https://podcasts.apple.com/de/podcast/der-max-moritz-podcast/id1809517974" target="_blank" rel="noopener noreferrer">Apple Podcast</a> verfügbar.
-      <iframe
-  src="https://play.prx.org/e?uf=https://anchor.fm/s/101d7c6a0/podcast/rss&sp=3"
-  width="100%"
-  height="600"
-  frameborder="0"
-  allow="autoplay; fullscreen"
-  style="border: none; border-radius: 8px;"
-></iframe>
+    <section class="projects">
+      <!-- Accordion: Filme -->
+      <div class="accordion-item">
+        <button class="accordion-btn">🎬 Filme</button>
+        <div class="accordion-content">
+          <!-- Video 1 -->
+          <div class="project">
+            <div class="media-wrapper">
+              <iframe src="https://www.youtube.com/embed/QKzA4syYQSU" allowfullscreen></iframe>
+            </div>
+            <p class="project-description">Beschreibung folgt in Kürze...</p>
+          </div>
 
-    
-	  </div>
-  </div>
+          <!-- Video 2 -->
+          <div class="youtube-thumbnail" data-url="https://www.youtube.com/watch?v=a1k8KOfwseE">
+            <img src="https://img.youtube.com/vi/a1k8KOfwseE/hqdefault.jpg" alt="Video Thumbnail">
+            <div class="play-button"></div>
+          </div>
+          <p class="project-description">Beschreibung folgt in Kürze...</p>
 
-  <div class="accordion-item">
-    <button class="accordion-btn">📸 Fotos / CG-Renders</button>
-    <div class="accordion-content">
-      
-		<p>Inhalt folgt in kürze...</p>
-    
-	  </div>
-  </div>
-</section>
+          <!-- Video 3 -->
+          <div class="youtube-thumbnail" data-url="https://www.youtube.com/watch?v=rgA3cPh0c_I">
+            <img src="https://img.youtube.com/vi/rgA3cPh0c_I/hqdefault.jpg" alt="Video Thumbnail">
+            <div class="play-button"></div>
+          </div>
+          <p class="project-description">Beschreibung folgt in Kürze...</p>
+        </div>
+      </div>
 
-	<!-- Am Ende des <body> -->
-<script src="js/accordion.js"></script>
-	  <script src="js/video-thumbnails.js"></script>
+      <!-- Accordion: Podcast -->
+      <div class="accordion-item">
+        <button class="accordion-btn">🎙️ Podcast</button>
+        <div class="accordion-content">
+          <p>Hier gibts die letzten drei Folgen vom Max und Moritz Podcast. Auch auf <a href="https://open.spotify.com/show/1i0vvZ83Mm3qPx2x22l9iO" target="_blank" rel="noopener noreferrer">Spotify</a> und <a href="https://podcasts.apple.com/de/podcast/der-max-moritz-podcast/id1809517974" target="_blank" rel="noopener noreferrer">Apple Podcast</a> verfügbar.</p>
+          <iframe src="https://play.prx.org/e?uf=https://anchor.fm/s/101d7c6a0/podcast/rss&sp=3"
+                  width="100%" height="600" frameborder="0" allow="autoplay; fullscreen"
+                  style="border: none; border-radius: 8px;"></iframe>
+        </div>
+      </div>
 
-  <footer>
+      <!-- Accordion: Fotos -->
+      <div class="accordion-item">
+        <button class="accordion-btn">📸 Fotos / CG-Renders</button>
+        <div class="accordion-content">
+          <p>Inhalt folgt in Kürze...</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
       <p>&copy; 2025 Moritz Runde</p>
     </footer>
-	  
-	</div>
-	</body>
+  </div>
+
+  <!-- JS -->
+  <script src="js/accordion.js"></script>
+  <script src="js/video-thumbnails.js"></script>
+
+  <!-- Burger-Menü JS -->
+  <script>
+    const burger = document.getElementById('burger-toggle');
+    const nav = document.getElementById('main-nav');
+    const overlay = document.getElementById('offcanvas-overlay');
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('active');
+      nav.classList.toggle('show');
+      overlay.classList.toggle('show');
+    });
+
+    overlay.addEventListener('click', () => {
+      burger.classList.remove('active');
+      nav.classList.remove('show');
+      overlay.classList.remove('show');
+    });
+  </script>
+</body>
 </html>
